@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-surface-base text-ink antialiased;
+    /* Respect the notch / home indicator on phones. */
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* A visible, consistent focus ring everywhere - never removed, only restyled. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-surface-base;
+  }
+
+  /* Numbers line up in columns when they share a width. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-surface-border;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-surface-border bg-surface-raised shadow-card;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-muted;
+  }
+
+  /* Boxed input - the default across forms. */
+  .field {
+    @apply w-full rounded-xl border border-surface-border bg-surface-raised px-3.5 py-2.5 text-ink
+      placeholder:text-ink-faint focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30;
+  }
+
+  /* Underlined input - used on the sign-in and sign-up screens. */
+  .field-underline {
+    @apply w-full border-0 border-b-2 border-brand-400/70 bg-transparent px-0 py-2.5 text-ink
+      placeholder:text-ink-faint focus:border-accent focus:outline-none focus:ring-0;
+  }
+
+  .field-error {
+    @apply border-negative focus:border-negative focus:ring-negative/25;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-surface-overlay;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+    animation: shimmer 1.6s infinite;
+  }
+
+  /* Touch targets stay at least 44px tall on phones. */
+  .tap {
+    @apply min-h-[44px];
+  }
+
+  /* The olive group tile from the home screen. */
+  .tile-accent {
+    @apply rounded-2xl bg-accent text-ink-onAccent shadow-tile;
+  }
+
+  /* Hairline separator used between list rows. */
+  .row-divider {
+    @apply border-b border-brand-200;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Share sliders (the group split screen)
+ *
+ * Range inputs cannot be styled with Tailwind alone - the thumb and track
+ * are vendor pseudo-elements. The track is painted with a gradient from the
+ * element's own --fill custom property so the filled portion tracks the value.
+ * ------------------------------------------------------------------ */
+.share-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.share-slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #d1403f 0%,
+    #d1403f var(--fill, 0%),
+    #e2ebcb var(--fill, 0%),
+    #e2ebcb 100%
+  );
+}
+
+.share-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: #e2ebcb;
+}
+
+.share-slider::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: #d1403f;
+}
+
+.share-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -8px;
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: #6b8a47;
+  border: 3px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(45, 58, 30, 0.35);
+}
+
+.share-slider::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 999px;
+  background: #6b8a47;
+  border: 3px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(45, 58, 30, 0.35);
+}
+
+.share-slider:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid #6b8a47;
+  outline-offset: 2px;
+}
+
+.share-slider:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

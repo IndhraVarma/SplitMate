@@ -1,0 +1,36 @@
+# Render Blueprint for the SplitMate API.
+#
+# IMPORTANT: the service is built from the REPOSITORY ROOT, not from server/,
+# because the server imports the shared financial core at /shared. Leave
+# "Root Directory" blank if you create the service through the dashboard.
+#
+# Secrets (MONGODB_URI, JWT_SECRET) are marked sync:false, so Render asks for
+# them in the dashboard and they are never committed to git.
+services:
+  - type: web
+    name: splitmate-api
+    runtime: node
+    plan: free
+    region: singapore
+    branch: main
+    # --omit=dev keeps mongodb-memory-server (a dev-only dependency that
+    # downloads a MongoDB binary) out of the production image.
+    buildCommand: npm --prefix server ci --omit=dev
+    startCommand: npm --prefix server start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: BCRYPT_SALT_ROUNDS
+        value: "12"
+      # Set this to your Vercel URL once the frontend is deployed.
+      - key: CORS_ORIGINS
+        sync: false

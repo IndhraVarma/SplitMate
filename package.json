@@ -1,0 +1,17 @@
+{
+  "name": "splitmate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SplitMate - mobile-first expense tracker and group money splitter (MERN)",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "seed": "npm --prefix server run seed",
+    "test": "npm --prefix server test && npm --prefix client test",
+    "test:server": "npm --prefix server test",
+    "test:client": "npm --prefix client test",
+    "build": "npm --prefix client run build"
+  },
+  "type": "module"
+}
