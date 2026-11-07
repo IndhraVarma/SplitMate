@@ -26,14 +26,11 @@ Whether you're managing a trip, a shared apartment, or everyday expenses with fr
 
 | Resource | Link |
 |---|---|
-| Frontend | `Add your Vercel URL` |
-| Backend API | `Add your Render API URL` |
-| API health check | `https://<your-api-domain>/api/health` |
-| Repository | `Add your GitHub repository URL` |
+| Frontend | https://splitmate-alpha-eosin.vercel.app/ |
+| Backend API | https://splitmate-suur.onrender.com |
+| Repository | https://github.com/IndhraVarma/SplitMate |
 
 ### Screenshots
-
-Add screenshots from the deployed application to `docs/screenshots/` and update the paths below.
 
 | Dashboard | Group balances | Shared expense |
 |---|---|---|
