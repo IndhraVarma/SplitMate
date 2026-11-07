@@ -1,7 +1,3 @@
-import pypandoc
-
-readme = r"""<div align="center">
-
 # SplitMate
 
 ### Track your spending. Split shared expenses. Settle up with confidence.
