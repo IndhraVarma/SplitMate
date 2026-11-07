@@ -32,9 +32,14 @@ Whether you're managing a trip, a shared apartment, or everyday expenses with fr
 
 ### Screenshots
 
-| Dashboard | Group balances | Shared expense |
-|---|---|---|
-| docs/Screenshot 2026-11-08 012047.png | `docs/screenshots/balances.png` | `docs/screenshots/shared-expense.png` |
+### 1. Dashboard
+![SplitMate Dashboard](docs/Screenshot%202026-11-08%20012047.png)
+
+### 2. Expense Management
+![Expense Management](docs/Screenshot%202026-11-08%20012129.png)
+
+### 3. Group Expense Management
+![Group Management](docs/Screenshot%202026-11-08%20012139.png)
 
 ## Features
 
