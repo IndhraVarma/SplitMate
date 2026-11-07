@@ -34,7 +34,7 @@ Whether you're managing a trip, a shared apartment, or everyday expenses with fr
 
 | Dashboard | Group balances | Shared expense |
 |---|---|---|
-| `docs/Screenshot 2026-11-08 012047.png` | `docs/screenshots/balances.png` | `docs/screenshots/shared-expense.png` |
+| docs/Screenshot 2026-11-08 012047.png | `docs/screenshots/balances.png` | `docs/screenshots/shared-expense.png` |
 
 ## Features
 
